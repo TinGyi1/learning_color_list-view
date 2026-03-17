@@ -28,7 +28,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   int count = 0;
-  List<Color> colorLst = [];
+  List colorLst = [];
 
   Color pickerColor = Color(0xff443a49);
   Color currentColor = Color(0xff443a49);
@@ -74,8 +74,22 @@ class _BodyState extends State<Body> {
           color: colorLst[index],
           borderRadius: BorderRadius.all(Radius.circular(25)),
         ),
-        child: Center(
-          child: Text("Color $index", style: TextStyle(color: Colors.white)),
+        child: Row(
+          spacing: 180,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 32),
+              child: Text("Color $index", style: TextStyle(color: Colors.white)),
+            ),
+            IconButton(
+              onPressed: () {
+                colorLst.removeAt(index);
+                setState(() {});
+              },
+              icon: Icon(Icons.remove,
+              color: Colors.white,),
+            ),
+          ],
         ),
       ),
     );
